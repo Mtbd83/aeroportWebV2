@@ -24,8 +24,8 @@ import application.service.LoginService;
 import application.service.ReservationService;
 
 @Controller
-@RequestMapping("/account")
-public class AccountController {
+@RequestMapping("/client")
+public class ClientController {
 
 	@Autowired
 	private ClientService clientService;
@@ -38,13 +38,23 @@ public class AccountController {
 	
 	@RequestMapping("")
 	public ModelAndView home() {
-		return new ModelAndView("redirect:/account/typeclient");
+		return new ModelAndView("redirect:/client/");
 	}
 	
-
+	@GetMapping("/")
+	public ModelAndView list() {
+		ModelAndView modelAndView = new ModelAndView("client/list", "clients", clientService.showAll());
+		return modelAndView;
+	}
+	
+	@GetMapping("/delete")
+	public ModelAndView delete(@RequestParam(name="idClient", required=true) Integer idClient) {
+		clientService.deleteclient(idClient);
+		return new ModelAndView("redirect:/client/");
+	}
 	
 	private ModelAndView goEdit(Client client) {
-		ModelAndView modelAndView = new ModelAndView("account/form", "client", client);
+		ModelAndView modelAndView = new ModelAndView("client/form", "client", client);
 		modelAndView.addObject("titres", Titre.values());
 		modelAndView.addObject("titresM", TitreMoral.values());
 		modelAndView.addObject("login", client.getLogin());
@@ -52,13 +62,18 @@ public class AccountController {
 		return modelAndView;
 	}
 	
-	
-
-
-	@GetMapping("/typeclient")
-	public void type() {
+	@GetMapping("/form")
+	public ModelAndView edit(@RequestParam(name="idClient", required=true) Integer idClient) {
+		Client client = clientService.showclient(idClient);
+		return goEdit(client);
 	}
 	
+	@GetMapping("/reservationsClient")
+	public ModelAndView afficherResa(@RequestParam(name="idClient", required=true) Integer idClient) {
+		Client client = clientService.showclient(idClient);
+		ModelAndView modelAndView = new ModelAndView("client/reservationsClient", "reservations", reservationService.showReservationByClient(client));
+		return modelAndView;
+	}
 	
 	@GetMapping("/addClientEl")
 	public ModelAndView addClientEl() {
@@ -97,7 +112,7 @@ public class AccountController {
 		Login login = client.getLogin();
 		loginService.CreateLogin(login);
 		clientService.createclient(client);
-		return new ModelAndView("redirect:/home");
+		return new ModelAndView("redirect:/client/");
 	}
 	
 }
