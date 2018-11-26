@@ -1,4 +1,4 @@
-package service;
+package application.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,8 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import model.Login;
-import repositories.LoginRepository;
+import application.model.Login;
+import application.repositories.LoginRepository;
 
 @Service
 public class LoginService {
@@ -25,7 +25,7 @@ public class LoginService {
 		Optional<Login> opt=loginRepository.findWithName(oldLogin);
 		if( opt.isPresent()){
 			Login login=opt.get();
-			login.setLogin(newLogin);
+			login.setIdentifiant(newLogin);
 			loginRepository.save(login);
 		}
 		}
@@ -45,7 +45,7 @@ public class LoginService {
 		Optional<Login> opt=loginRepository.findById(login.getId());
 		if( opt.isPresent()){
 			Login log=opt.get();
-			return log.getLogin();
+			return log.getIdentifiant();
 	}else {
 		return "y a rien";
 	}
