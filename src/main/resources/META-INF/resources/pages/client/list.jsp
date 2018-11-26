@@ -72,7 +72,7 @@
 				<td>${client.mail }</td>
 				<td>${client.adresse.numero } ${client.adresse.rue } ${client.adresse.codePostal } 
 				${client.adresse.ville } ${client.adresse.pays }</td>
-				<td>${client.login.login }</td>
+				<td>${client.login.identifiant }</td>
 				<td>
 					<c:if test="${client.getClass().simpleName=='ClientEl'}">${client.titrePhysique }</c:if>
 					<c:if test="${client.getClass().simpleName=='ClientMoral'}">${client.titreMoral }</c:if>

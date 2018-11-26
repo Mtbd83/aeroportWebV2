@@ -101,9 +101,9 @@
 				</div>
 		</c:if>
 		<div class="form-group">
-			<form:label path="login.login">Login : </form:label>
-			<form:input path="login.login" cssClass="form-control" />
-			<form:errors path="login.login"></form:errors>
+			<form:label path="login.identifiant">Login : </form:label>
+			<form:input path="login.identifiant" cssClass="form-control" />
+			<form:errors path="login.identifiant"></form:errors>
 		</div>
 		<div class="form-group">
 			<button type="submit" class="btn btn-success">Enregistrer</button>
