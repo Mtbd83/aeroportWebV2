@@ -13,9 +13,13 @@
 <body>
 
 <div class="container" align="center">
-	<a class="btn btn-info" href="./addClientEl" >Nouveau Client El</a>
-	<a class="btn btn-info" href="./addClientMoral" >Nouveau Client Moral</a>
-	<a class="btn btn-info" href="./addClientPhysique" >Nouveau Client Physique</a>
+
+<h3> Please choose your status :</h3>
+
+<br>
+	<a class="btn btn-info" href="./addClientEl" > Client El</a>
+	<a class="btn btn-info" href="./addClientMoral" >Client Moral</a>
+	<a class="btn btn-info" href="./addClientPhysique" >Client Physique</a>
 </div>
 </body>
 </html>

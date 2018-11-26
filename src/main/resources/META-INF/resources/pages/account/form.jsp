@@ -22,10 +22,10 @@
 </header>
 
 <ul>
-  <li><a href="index.html">Home</a></li>
-  <li><a href="form_client.html">Create Customer Account</a></li>
-  <li><a href="login.html">Login</a></li>
-  <li><a href="flight_research.html">Flight Research</a></li>
+  <li><a href="/aeroportWeb/home">Home</a></li>
+  <li><a href="/aeroportWeb/account">Create Customer Account</a></li>
+  <li><a href="/aeroportWeb/login">Login</a></li>
+  <li><a href="/aeroportWeb/flightResearch">Flight Research</a></li>
   <li style="float:right"><a class="active" href="#contact">Contact</a></li>
 </ul>
 
