@@ -32,7 +32,7 @@
   <li style="float:right"><a class="active" href="#contact">Contact</a></li>
 </ul>
 
-<div>
+	<div>
 		<c:if test="${pageContext.request.userPrincipal.name != null }">
 			Logged as : ${pageContext.request.userPrincipal.name } 
 			<a class="btn" href="logout">Logout</a>

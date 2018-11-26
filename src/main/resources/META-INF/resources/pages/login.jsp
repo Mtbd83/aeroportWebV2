@@ -23,7 +23,7 @@
 </head>
 
 <body>
-
+<div class= "container">
 	<header>
 		<h1>AJC-SOPRA AIRPORT</h1>
 	</header>
@@ -56,7 +56,7 @@
 
 		</table>
 	</form>
-
+</div>
 </body>
 
 <footer>

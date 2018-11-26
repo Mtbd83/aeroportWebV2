@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +13,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
 <div class="container">
 
 		<header>
@@ -25,15 +26,30 @@
 		  <li><a href="/aeroportWeb/flightResearch">Flight Research</a></li>
 		  <li style="float:right"><a class="active" href="#contact">Contact</a></li>
 		</ul>
-<div class="center"></div>
-<h3> Please choose your status :</h3>
+		
+		<h1> Result : </h1>
 
-<br>
-	<a class="btn btn-info" href="./addClientEl" > Client El</a>
-	<a class="btn btn-info" href="./addClientMoral" >Client Moral</a>
-	<a class="btn btn-info" href="./addClientPhysique" >Client Physique</a>
-	
-</div>
-</div>
+		<table class="table">
+			<tr align="center">
+				<th>Id</th>
+				<th>Date de Depart</th>
+				<th>Date d'Arrivée</th>
+				<th>Heure de Depart</th>
+				<th>Heure d'Arrivée</th>
+
+
+			</tr>
+				<tr align="center">
+					<td>${vol.idVol}</td>
+					<td><fmt:formatDate value="${vol.dateDepart}" type="date"
+							pattern="dd/MM/YYYY" /></td>
+					<td><fmt:formatDate value="${vol.dateArrivee}" type="date"
+							pattern="dd/MM/YYYY" /></td>
+					<td><fmt:formatDate value="${vol.heureDepart}" type="time" /></td>
+					<td><fmt:formatDate value="${vol.heureArrivee}" type="time" /></td>
+					
+				</tr>
+		</table>
+	</div>
 </body>
 </html>
