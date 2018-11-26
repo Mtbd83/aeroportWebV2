@@ -10,7 +10,7 @@ import application.model.Login;
 
 public interface LoginRepository extends JpaRepository<Login, Integer> {
 
-	@Query("select l from Login l where l.login=:identifiant")
+	@Query("select l from Login l where l.identifiant=:identifiant")
 	Optional<Login> findWithName(@Param("identifiant") String identifiant);
 	
 	@Query("select l from Login l where l.id=:id")

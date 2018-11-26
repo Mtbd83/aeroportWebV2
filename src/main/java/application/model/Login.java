@@ -30,7 +30,7 @@ public class Login {
 	private int version;
 	@OneToOne(mappedBy = "login")
 	private Client client;
-
+	@Column(name = "enable")
 	private boolean enable;
 	@OneToMany(mappedBy = "login")
 	private Set<LoginRole> roles;
