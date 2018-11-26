@@ -5,13 +5,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("")
+@RequestMapping(path= {"","/home"})
 public class HomeController {
 	
 	@RequestMapping("")
 	public ModelAndView home() {
-		ModelAndView mdv = new ModelAndView("/home");
-		return mdv;
+		return  new ModelAndView("/home");
 	}
 	
 

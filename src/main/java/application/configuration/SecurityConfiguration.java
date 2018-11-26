@@ -18,9 +18,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		private CustumUserDetailService custumUserDetailService;
 	
 		protected void configure(HttpSecurity http) throws Exception {
-			http.authorizeRequests().antMatchers("/home/").permitAll();
-			http.authorizeRequests().antMatchers("/home/**").authenticated().and().formLogin().loginPage("/login")
-					.failureUrl("/login?error=erreur").permitAll().and().logout().permitAll().logoutSuccessUrl("/home/");
+			http.authorizeRequests().antMatchers("/home").permitAll();
+			http.authorizeRequests().antMatchers("/account/**").authenticated().and().formLogin().loginPage("/login")
+					.failureUrl("/login?error=erreur").permitAll().and().logout().permitAll().logoutSuccessUrl("/home");
 			http.csrf().disable();
 			http.headers().frameOptions().disable();
 		}
