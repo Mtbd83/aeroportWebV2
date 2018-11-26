@@ -22,7 +22,7 @@ public class LoginService {
 	
 	public void changeLogin(String oldLogin,String newLogin) {
 		
-		Optional<Login> opt=loginRepository.findWithName(oldLogin);
+		Optional<Login> opt=loginRepository.findById(oldLogin);
 		if( opt.isPresent()){
 			Login login=opt.get();
 			login.setIdentifiant(newLogin);
@@ -32,7 +32,7 @@ public class LoginService {
 		
 		
 	public String showMdp(String login) {
-		Optional<Login> opt=loginRepository.findWithName(login);
+		Optional<Login> opt=loginRepository.findById(login);
 		if( opt.isPresent()){
 			Login log=opt.get();
 			 return log.getMotDePasse();
@@ -42,7 +42,7 @@ public class LoginService {
 	}
 		
 	public String showLogin(Login login) {
-		Optional<Login> opt=loginRepository.findById(login.getId());
+		Optional<Login> opt=loginRepository.findById(login.getIdentifiant());
 		if( opt.isPresent()){
 			Login log=opt.get();
 			return log.getIdentifiant();

@@ -4,19 +4,12 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 
 import application.model.Login;
 
-public interface LoginRepository extends JpaRepository<Login, Integer> {
-
-	@Query("select l from Login l where l.identifiant=:identifiant")
-	Optional<Login> findWithName(@Param("identifiant") String identifiant);
-	
-	@Query("select l from Login l where l.id=:id")
-	Optional<Login> findWithId(@Param("id") Integer id);
+public interface LoginRepository extends JpaRepository<Login, String> {
 	
 	@Query("select l from Login l left join fetch l.roles where l.identifiant=?1")
-	public Optional<Login> findByIdWithRoles(String username); 
+	public Optional<Login> findByIdWithRoles(String identifiant); 
 	
 }

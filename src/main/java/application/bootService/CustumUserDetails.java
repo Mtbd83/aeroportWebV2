@@ -1,6 +1,8 @@
 package application.bootService;
 
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -8,6 +10,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.util.StringUtils;
 
 import application.model.Login;
+import application.model.LoginRole;
+import application.model.Role;
 
 
 
@@ -20,10 +24,20 @@ public class CustumUserDetails implements UserDetails {
 		super();
 		this.login = login;
 	}
+	
+	@SuppressWarnings("static-access")
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
+		Set<Role> listRole = new HashSet<Role>();
+		for (LoginRole loginRole : login.getRoles()) {
+			if(loginRole.getRole() == loginRole.getRole().ROLE_ADMIN) {
+				listRole.add(loginRole.getRole().ROLE_ADMIN);
+			} else {
+				listRole.add(loginRole.getRole().ROLE_USER);
+			}
+		}
 		return AuthorityUtils
-				.commaSeparatedStringToAuthorityList(StringUtils.collectionToCommaDelimitedString(login.getRoles()));
+				.commaSeparatedStringToAuthorityList(StringUtils.collectionToCommaDelimitedString(listRole));
 	}
 
 	@Override
