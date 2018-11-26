@@ -14,12 +14,15 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "login_role")
 public class LoginRole {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
 	@ManyToOne
-	@JoinColumn(name = "username")
+	@JoinColumn(name = "id_login")
 	private Login login;
+	
 	@Enumerated(EnumType.STRING)
 	private Role role;
 	
@@ -27,7 +30,6 @@ public class LoginRole {
 	public LoginRole() {
 		super();
 	}
-
 
 	public Integer getId() {
 		return id;

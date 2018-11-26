@@ -4,24 +4,18 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
 
 @Entity
-@SequenceGenerator(name = "seq__login", sequenceName = "seq_login", initialValue = 10, allocationSize = 1)
 @Table(name = "login")
 
 public class Login {
 	@Id
-	@GeneratedValue(generator = "seq__login", strategy = GenerationType.SEQUENCE)
-	private Integer id;
 	@Column(name = "identifiant")
 	private String identifiant;
 	@Column(name = "mot_de_passe")
@@ -44,14 +38,6 @@ public class Login {
 		super();
 		this.identifiant = identifiant;
 		this.motDePasse = motDePasse;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
 	}
 
 	public String getIdentifiant() {
@@ -106,7 +92,7 @@ public class Login {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((identifiant == null) ? 0 : identifiant.hashCode());
 		return result;
 	}
 
@@ -119,12 +105,14 @@ public class Login {
 		if (getClass() != obj.getClass())
 			return false;
 		Login other = (Login) obj;
-		if (id == null) {
-			if (other.id != null)
+		if (identifiant == null) {
+			if (other.identifiant != null)
 				return false;
-		} else if (!id.equals(other.id))
+		} else if (!identifiant.equals(other.identifiant))
 			return false;
 		return true;
 	}
+
+
 
 }
